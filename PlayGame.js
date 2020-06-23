@@ -64,30 +64,24 @@ class PlayGame extends React.Component {
              this.setState({player: 1,flag: 0})
          }
      }
+     winnerCondition(player)
+     {
+       if((this.state.row1[0].value === player&&this.state.row1[1].value === player&&this.state.row1[2].value === player)||
+         (this.state.row2[0].value === player&&this.state.row2[1].value === player&&this.state.row2[2].value === player)||
+         (this.state.row3[0].value === player&&this.state.row3[1].value === player&&this.state.row3[2].value === player)||
+         (this.state.row1[0].value===player&&this.state.row2[0].value===player&&this.state.row3[0].value===player)||
+         (this.state.row1[1].value===player&&this.state.row2[1].value===player&&this.state.row3[1].value===player)||
+         (this.state.row1[2].value===player&&this.state.row2[2].value===player&&this.state.row3[2].value===player)||
+         (this.state.row1[0].value===player&&this.state.row2[1].value===player&&this.state.row3[2].value===player)||
+         (this.state.row1[2].value===player&&this.state.row2[1].value===player&&this.state.row3[0].value===player))
+         {
+                this.setState({winner: "Player "+player+" win!!"})
+         }
+     }
      checkWinner()
      {
-         if((this.state.row1[0].value === "0"&&this.state.row1[1].value === "0"&&this.state.row1[2].value === "0")||
-         (this.state.row2[0].value === "0"&&this.state.row2[1].value === "0"&&this.state.row2[2].value === "0")||
-         (this.state.row3[0].value === "0"&&this.state.row3[1].value === "0"&&this.state.row3[2].value === "0")||
-         (this.state.row1[0].value==="0"&&this.state.row2[0].value==="0"&&this.state.row3[0].value==="0")||
-         (this.state.row1[1].value==="0"&&this.state.row2[1].value==="0"&&this.state.row3[1].value==="0")||
-         (this.state.row1[2].value==="0"&&this.state.row2[2].value==="0"&&this.state.row3[2].value==="0")||
-         (this.state.row1[0].value==="0"&&this.state.row2[1].value==="0"&&this.state.row3[2].value==="0")||
-         (this.state.row1[2].value==="0"&&this.state.row2[1].value==="0"&&this.state.row3[0].value==="0"))
-         {
-                this.setState({winner: "Player 0 win!!"})
-         }
-         else if((this.state.row1[0].value === "X"&&this.state.row1[1].value === "X"&&this.state.row1[2].value === "X")||
-         (this.state.row2[0].value === "X"&&this.state.row2[1].value === "X"&&this.state.row2[2].value === "X")||
-         (this.state.row3[0].value === "X"&&this.state.row3[1].value === "X"&&this.state.row3[2].value === "X")||
-         (this.state.row1[0].value==="X"&&this.state.row2[0].value==="X"&&this.state.row3[0].value==="X")||
-         (this.state.row1[1].value==="X"&&this.state.row2[1].value==="X"&&this.state.row3[1].value==="X")||
-         (this.state.row1[2].value==="X"&&this.state.row2[2].value==="X"&&this.state.row3[2].value==="X")||
-         (this.state.row1[0].value==="X"&&this.state.row2[1].value==="X"&&this.state.row3[2].value==="X")||
-         (this.state.row1[2].value==="X"&&this.state.row2[1].value==="X"&&this.state.row3[0].value==="X"))
-         {
-                this.setState({winner: "Player X win!!"})
-         }
+       this.winnerCondition("0");
+       this.winnerCondition("X");
      }
 
      changeByRow(row,child)
