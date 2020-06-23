@@ -6,7 +6,7 @@ class MakeTodo extends React.Component {
        data: ['Scrum'],
        completeData:[],
        taskname:'',
-       index:4,
+       index:1,
        completeIndex:0
      }
      this.delete1 = this.delete1.bind(this);
