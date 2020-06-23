@@ -3,7 +3,7 @@ class ShowTime extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      time2: new Date().toLocaleString()
+      time2: new Date()
     };
   }
   componentDidMount() {
@@ -17,13 +17,13 @@ class ShowTime extends React.Component {
   }
   tick() {
     this.setState({
-      time2: new Date().toLocaleString()
+      time2: new Date()
     });
   }
   render() {
     return (
       <p className="App-clock">
-        The time is {this.state.time2}.
+        The time is {this.state.time2.toLocaleString()}.
       </p>
     );
   }
