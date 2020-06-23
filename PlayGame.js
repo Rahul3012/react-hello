@@ -89,75 +89,40 @@ class PlayGame extends React.Component {
                 this.setState({winner: "Player X win!!"})
          }
      }
+
+     changeByRow(row,child)
+     {
+       for(let i=0;i<row.length;i++)
+        {
+            if(row[i].id==child)
+            {
+                if(!row[i].status)
+                {
+                    if(this.state.player==1)
+                    {
+                        row[i].value="0";
+                        row[i].status=true;
+                        this.changePlayer();
+                    }
+                    if(this.state.player==2) 
+                    {   
+                        row[i].value="X"; 
+                        row[i].status=true;
+                        this.changePlayer();
+                    }
+                }
+            }
+        }
+        return row;
+     }
      changeSign(child){
-        for(let i=0;i<this.state.row1.length;i++)
-        {
-            if(this.state.row1[i].id==child)
-            {
-                if(!this.state.row1[i].status)
-                {
-                    if(this.state.player==1)
-                    {
-                        this.state.row1[i].value="0";
-                        this.state.row1[i].status=true;
-                        this.changePlayer();
-                    }
-                    if(this.state.player==2) 
-                    {   
-                        this.state.row1[i].value="X"; 
-                        this.state.row1[i].status=true;
-                        this.changePlayer();
-                    }
-                }
-            }
-        }
-        for(let i=0;i<this.state.row2.length;i++)
-        {
-            if(this.state.row2[i].id==child)
-            {
-                if(!this.state.row2[i].status)
-                {
-                    if(this.state.player==1)
-                    {
-                        this.state.row2[i].value="0";
-                        this.state.row2[i].status=true;
-                        this.changePlayer();
-                    }
-                    if(this.state.player==2) 
-                    {   
-                        this.state.row2[i].value="X"; 
-                        this.state.row2[i].status=true;
-                        this.changePlayer();
-                    }   
-                }
-            }
-        }
-        for(let i=0;i<this.state.row3.length;i++)
-        {
-            if(this.state.row3[i].id==child)
-            {
-                if(!this.state.row3[i].status)
-                {
-                    if(this.state.player==1)
-                    {
-                        this.state.row3[i].value="0";
-                        this.state.row3[i].status=true;
-                        this.changePlayer();
-                    }
-                    if(this.state.player==2) 
-                    {   
-                        this.state.row3[i].value="X"; 
-                        this.state.row3[i].status=true;
-                        this.changePlayer();
-                    }
-                } 
-            }
-        }
+        this.state.row1=this.changeByRow(this.state.row1,child);
+        this.state.row2=this.changeByRow(this.state.row2,child);
+        this.state.row3=this.changeByRow(this.state.row3,child);
         this.setState({row1: this.state.row1});
         this.setState({row2: this.state.row2});
         this.setState({row3: this.state.row3});
         this.checkWinner();
-        
      }
     render() { 
         return ( 
