@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import ShowTime from './ShowTime';
 import PlayGame from './PlayGame';
 import MakeTodo from './MakeTodo';
+import UserRegister from './UserRegister';
 import './style.css';
 
 class App extends Component {
@@ -25,6 +26,9 @@ class App extends Component {
         <p>
         Make A Todo List:
           <MakeTodo/>
+        </p>
+        <p>
+          <UserRegister/>
         </p>
       </div>
     );
